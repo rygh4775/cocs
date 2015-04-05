@@ -1,0 +1,1 @@
+package com.cocs.handler;import java.util.Map;public interface ResponseSuccess<K,V> extends Map<K,V>{	boolean isSuccess();	String getId();}

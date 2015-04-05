@@ -1,0 +1,58 @@
+#uploadList tr{
+	height: 36px;
+}
+
+#uploadStatus {
+	max-width : 500px;
+	position: fixed;
+    bottom: 0;
+	z-index: 9999;
+	background-color: white;
+	outline : 1px solid #CACBCD;
+	/* center the element */
+    right: 0px;
+    left: 0;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+	#uploadStatus {
+	  right: 20px;
+	}
+}
+
+#uploadStatus table{
+	width : 100%;
+	table-layout: fixed;
+}
+
+#uploadStatus .header {
+	background-color: #5BC0DE;
+    border-color: #46B8DA;
+	height: 30px;
+	line-height : 30px;
+}
+
+#uploadStatus .body {
+	max-height: 200px;
+	overflow-y: auto;
+/* 	font-size: 10px !important; */
+}
+
+#uploadStatus .glyphicon-remove, #uploadStatus .glyphicon-minus  {
+	cursor: pointer;
+	padding : 5px;
+}
+
+#uploadStatus .progress {
+	height: 18px;
+	margin-bottom: 0;
+}
+
+#uploadStatus p.name {
+	margin : 5px 0 !important;
+}
+
+#close_uploadStatus,#resize_uploadList {
+	margin-right: 5px;
+}

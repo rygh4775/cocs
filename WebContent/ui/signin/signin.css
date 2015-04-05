@@ -1,0 +1,40 @@
+body { padding-top: 0px;}
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Full Page Image Header Area */
+
+.header {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: url(../resources/img/index_img/background_001.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main-text{
+	position:relative;
+	
+}
+
+.signin_body{
+	background: #fff;
+	border:1px solid #fff;
+	border-radius: 10px;
+	box-shadow: 5px 5px 20px #000;
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/mvc
+       					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						http://www.springframework.org/schema/aop
+					    http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<context:annotation-config />
+	
+	<bean id="env" class="com.cocs.common.Env">
+		<property name="locations">
+			<list>
+				<value>classpath:default.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cassandraServer" class="com.cocs.server.CassandraIntinalizer" init-method="start" destroy-method="stop" depends-on="env"/>
+	
+	<bean id="cassandraHostConfigurator" class="me.prettyprint.cassandra.service.CassandraHostConfigurator" depends-on="cassandraServer">
+		<constructor-arg value="${cassandra.url}"/>
+	</bean>
+	
+	<bean id="cluster" class="me.prettyprint.cassandra.service.ThriftCluster">
+		<constructor-arg value="${cassandra.cluster.name}"/>
+		<constructor-arg ref="cassandraHostConfigurator"/>
+	</bean>
+	
+	<bean id="indexer" class="com.cocs.server.CassandraIndexer">
+		<constructor-arg ref="cluster"/>
+		<constructor-arg value="${cassandra.keyspace.name}"/>
+		<constructor-arg>
+		    <array>
+		        <value>id</value>
+		        <value>oauthProvider</value>
+		    </array>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="keyspace" class="me.prettyprint.hector.api.factory.HFactory" factory-method="createKeyspace">
+		<constructor-arg value="${cassandra.keyspace.name}"/>
+		<constructor-arg ref="cluster" />
+	</bean>
+	
+<!-- 	<bean id="userDao" class="me.prettyprint.cassandra.dao.SimpleCassandraDao"> -->
+<!-- 	    <property name="keyspace" ref="keyspace"/> -->
+<!-- 	    <property name="columnFamilyName" value="${cassandra.columnfamily.name}"/> -->
+<!-- 	</bean> -->
+	
+	<bean id="usersDAO" class="com.cocs.server.dao.UsersDAO">
+	    <property name="keyspace" ref="keyspace"/>
+	    <property name="columnFamilyName" value="${cassandra.columnfamily.name}"/>
+	</bean>
+	
+	<bean id="sessionContextFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+	    <property name="targetBeanName" value="sessionContext" />
+	</bean>
+  
+	<bean id="clientManger" class="com.cocs.service.ClientManager"/>
+	
+	<context:component-scan base-package="com.cocs.service" />
+	
+	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg>
+			<value>${repository.upload.dir}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>${repository.upload.max.size}</value>
+		</property>
+		<property name="uploadTempDir" ref="uploadDirResource" />
+	</bean>
+	
+	<context:component-scan base-package="com.cocs.mail"/>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+	
+	
+</beans>

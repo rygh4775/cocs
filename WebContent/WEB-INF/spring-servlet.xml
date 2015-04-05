@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/mvc
+       					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						http://www.springframework.org/schema/aop
+					    http://www.springframework.org/schema/aop/spring-aop.xsd">
+					    
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+<!-- 	<mvc:default-servlet-handler/> -->
+	
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	
+	<context:component-scan base-package="com.cocs.webapp" />
+	
+	<bean id="userLoginIntercepter" class="com.cocs.webapp.intercepter.UserLoginIntercepter" />
+	
+	<bean class="org.springframework.web.servlet.handler.MappedInterceptor">
+		<constructor-arg index="0" value="/**"></constructor-arg>
+		<constructor-arg index="1" ref="userLoginIntercepter"/>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	    <!-- ViewResolver 우선순위 설정 -->
+	    <property name="order" value="1" />
+	    <property name="mediaTypes">
+	        <!-- 맵핑될 확장자 정의 -->
+	        <map>
+	            <entry key="json" value="application/json" />
+	        </map>
+	    </property>
+	    <property name="defaultViews">
+	        <list>
+	            <!-- JSON 요청을 처리할 뷰 -->
+	            <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+	        </list>
+	    </property>
+	    <property name="ignoreAcceptHeader" value="true" />
+	</bean>
+ 
+	<!-- 맵핑되는 확장자가 없을때 JSP 로 뷰 처리 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="order" value="2" />
+	    <property name="prefix" value="/ui/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean id="exceptionMapping" class="org.springframework.handler.CustomSimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.cocs.webapp.exception.UserLoginException">signin/index</prop>
+			</props>
+		</property>
+		<property name="exceptionAttribute" value="exception" />
+		<property name="defaultErrorView" value="common/error" />
+	</bean>
+</beans>

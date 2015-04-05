@@ -1,0 +1,1 @@
+package com.cocs.handler;import java.util.Collection;import java.util.Map;public interface ResponseRows<K,V> extends Map<K,V>{	long getTotalCount();	Collection<?> getRows();}

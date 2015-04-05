@@ -1,0 +1,142 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* body { padding-top: 70px; overflow: hidden;} */
+body { 
+	padding-top: 70px;
+}
+
+body.top_zero {
+	padding-top: 0 !important;
+}
+
+label.error {
+  font-weight: bold;
+  color: red;
+}
+
+.spin {
+	position: fixed;
+	 /* center the element */
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    top: 50%;
+}
+
+.breadcrumb > li + li:before {
+  color: #2a6496;
+  content: " > ";
+}
+/* #quota{ */
+/* 	position :relative; */
+/* 	width:80%; */
+/* 	float:left; */
+/* } */
+#home .thumbnail.status {
+	min-height: 330px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	margin-bottom: 25px;
+}
+
+#home #allQuota {
+    margin-bottom: 30px;
+    margin-left: auto;
+	margin-right: auto;
+/* 	width: 350px; */
+}
+ 
+#left_treeGrid {
+	overflow : auto;
+	padding-left: 5px;
+	border-right: 1px solid #DDD;
+}
+
+#left_treeGrid span{
+	white-space: nowrap;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+/* @media (max-width: 767px) { */
+@media (max-width: 991px) {	
+	#list {
+		padding : 0 !important;
+	}
+	#grid {
+		padding : 0 !important;
+	}
+	#search {
+		padding : 0 !important;
+	}
+	#searchGrid {
+		padding : 0 !important;
+	}
+	
+}
+
+.navbar-inner {
+    background: none repeat scroll 0 0 rgba(46, 46, 46, 0.35);
+}
+
+.navbar-inner a{
+    color: #D3D3D3;
+}
+
+.navbar-inner a:hover{
+    color: white;
+}
+
+footer {
+	background: none repeat scroll 0 0 #3B3B3B;
+    border-bottom: 1px solid #E5E5E5;
+    border-top: 1px solid #FFFFFF;
+    color: #777;
+    padding: 20px;
+/* 	background: none repeat scroll 0 0 #3B3B3B; */
+/*     color: #888888; */
+/*     display: block; */
+/*     font-size: 12px; */
+/*     padding: 50px 0 100px; */
+/*     position: relative; */
+/*     width: 100%; */
+}
+
+footer .title {
+	font-size : 20px;
+}
+
+footer a {
+	color : #777;
+}
+
+footer a:hover{
+	color : #EEE;
+}
+
+.steps > li.active > a, .steps > li.active > a:hover, .steps > li.active > a:focus {
+    background-color: #5bc0de;
+    color: #FFFFFF;
+}
+
+.contents {
+	min-height: 600px;
+}
+
+.popover {
+	z-index : 9999;
+	min-width: 300px;
+}
+
+.ellipsis {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

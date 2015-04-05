@@ -1,0 +1,1 @@
+package com.cocs.handler;import java.util.Map;public interface ResponseResult <K,V> extends Map<K,V>{	Object getResult();}
