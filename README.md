@@ -4,7 +4,7 @@ Your content manager in the cloud. COCS(Cloud Of CloudS) connects your favorite 
 
 To see our service, please connect [https://cocs.no-ip.biz](https://cocs.no-ip.biz)
 
-**FYI**: The service web site is not available anymore from April 2015
+**FYI**: Sadly, the service web site is not available anymore from April 2015.
 
 ## features
 
