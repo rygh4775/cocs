@@ -22,7 +22,7 @@ We currently support Dropbox, Google drive and will support Microsoft OneDrive i
 
 ## Skills
 
-- Google API (File handling)
+- Google drive API (File handling)
 - Dropbox API (File handling)
 - Facebook API (User sign-in)
 - Twitter API (User sign-in)
