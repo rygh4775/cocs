@@ -14,7 +14,7 @@ We currently support Dropbox, Google drive and will support Microsoft OneDrive i
 ## Demo
 ~~https://cocs.no-ip.biz~~
 
-**FYI**: Sadly, the service web site is not available anymore from April 2015.
+**FYI**: Sadly, the service web site is not available anymore since April 2015.
 
 ![main-page1](/image/main-page1.png)
 ![main-page2](/image/main-page2.png)
