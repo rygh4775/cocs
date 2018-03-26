@@ -1,4 +1,4 @@
-# Cloud Of CloudS
+# COCS
 
 COCS(Cloud Of CloudS) is a service that manages your files from multiple cloud services in one place.
 We currently support Dropbox, Google drive and will support Microsoft OneDrive in the future.
