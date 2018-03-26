@@ -1,36 +1,32 @@
 # Cloud Of CloudS
 
-Your content manager in the cloud. COCS(Cloud Of CloudS) connects your favorite cloud services(Goggle Drive, Dropbox supported) and gets instant access to your content in the cloud.
+COCS(Cloud Of CloudS) is a service that manages your files from multiple cloud services in one place.
+We currently support Dropbox, Google drive and will support Microsoft OneDrive in the future.
 
-To see our service, please connect [https://cocs.no-ip.biz](https://cocs.no-ip.biz)
+## Features
+
+- Multiple account integrated with an account
+- Searching your files from multiple cloud service at once
+- Moving and copying your files across multiple cloud services
+- Responsive web designed to support your desktop, tablet and smartphone
+- Sign-in with your multiple account (Facebook, Twitter and Naver)
+
+## Demo
+~~https://cocs.no-ip.biz~~
 
 **FYI**: Sadly, the service web site is not available anymore from April 2015.
 
-## features
+![main-page1](/image/main-page1.png)
+![main-page2](/image/main-page2.png)
+![main-page3](/image/main-page3.png)
 
-- multiple account integrated with an account
-- searching your files from multiple cloud service at once
-- moving and copying your files across multiple cloud services
-- responsive web designed to support your desktop, tablet and smartphone
-- sign-in with your another account (Facebook, Twitter and Naver)
+## Skills
 
-## Technology (open api, open source and service)
-
-- Open API
-  * Google API
-  * Dropbox API
-  * Facebook API
-  * Twitter API
-  * Naver API
-
-- UI
-  * Bootstrap
-  
-- Storage
-  * Cassandra
-
-- Server
-  * Amazon EC2
-  
-- DNS
-  * No-IP
+- Google API (File handling)
+- Dropbox API (File handling)
+- Facebook API (User sign-in)
+- Twitter API (User sign-in)
+- Naver API (User sign-in)
+- Bootstrap (UI)
+- Cassandra (Storage)
+- Amazon EC2 (Infra)
